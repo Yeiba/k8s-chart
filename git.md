@@ -57,6 +57,8 @@ Usage: git merge [branch name]
 
 git remote
 Usage: git remote add [variable name] [Remote Server Link] 
+git remote remove origin
+
 
 git push
 Usage: git push [variable name] master
