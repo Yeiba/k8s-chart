@@ -22,6 +22,6 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 helm template ingress-nginx ingress-nginx \
   --repo https://kubernetes.github.io/ingress-nginx \
-  --version 1.10.0 \
+  --version 4.10.0 \
   --namespace ingress-nginx \
   > ./ingress-controller/ingress-nginx/ingress-nginx-1-10.0.yaml
