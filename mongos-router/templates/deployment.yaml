@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongos
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: mongos
+  template:
+    metadata:
+      labels:
+        role: mongos
+    spec:
+      containers:
+        - name: mongos
+          image: mongo:latest
+          command:
+            - mongos
+            - "--configdb"
+            - "configReplSet/config-server-0.config-server:27017,config-server-1.config-server:27017,config-server-2.config-server:27017"
+            - "--bind_ip_all"
+          ports:
+            - containerPort: 27017

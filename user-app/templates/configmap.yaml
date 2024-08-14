@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-app-config
+  labels:
+    app: user-app
+data:

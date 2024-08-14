@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-config-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: init-config-server
+          image: mongo:latest
+          command:
+            [
+              "mongo",
+              "--eval",
+              "rs.initiate({_id: 'configReplSet', configsvr: true, members: [{ _id : 0, host : 'config-server-0.config-server:27017' }, { _id : 1, host : 'config-server-1.config-server:27017' }, { _id : 2, host : 'config-server-2.config-server:27017' }]})",
+            ]
+      restartPolicy: OnFailure

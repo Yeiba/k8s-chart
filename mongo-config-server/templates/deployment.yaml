@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: config-server
+spec:
+  serviceName: "config-server"
+  replicas: 3
+  selector:
+    matchLabels:
+      role: config-server
+  template:
+    metadata:
+      labels:
+        role: config-server
+    spec:
+      containers:
+        - name: config-server
+          image: mongo:latest
+          command:
+            - mongod
+            - "--configsvr"
+            - "--replSet"
+            - "configReplSet"
+            - "--bind_ip_all"
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: config-data
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: config-data
+      spec:
+        accessModes: ["ReadWriteMany"]
+        storageClassName: "nfs-client"
+        resources:
+          requests:
+            storage: 1Gi

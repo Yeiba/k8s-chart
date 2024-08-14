@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: shard2
+spec:
+  serviceName: "shard2"
+  replicas: 3
+  selector:
+    matchLabels:
+      role: shard2
+  template:
+    metadata:
+      labels:
+        role: shard2
+    spec:
+      containers:
+        - name: shard2
+          image: mongo:latest
+          command:
+            - mongod
+            - "--shardsvr"
+            - "--replSet"
+            - "shard2ReplSet"
+            - "--bind_ip_all"
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: shard2-data
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: shard2-data
+      spec:
+        accessModes: ["ReadWriteMany"]
+        storageClassName: "nfs-client"
+        resources:
+          requests:
+            storage: 1Gi

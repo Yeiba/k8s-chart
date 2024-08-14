@@ -1,0 +1,9 @@
+--- 
+repositories:
+  - name: github
+    url: https://github.com/
+
+releases:
+  - name: user-app-v1
+    chart: ./user-app
+    installed: true
