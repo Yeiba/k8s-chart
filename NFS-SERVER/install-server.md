@@ -46,4 +46,4 @@ helm install nfs-subdir-external-provisioner \
 nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
     --set nfs.server=x.x.x.x \
     --set nfs.path=/k8sdata
-    --et storageClass.onDelete-true -n storagenfs
+    --set storageClass.onDelete-true -n storagenfs
