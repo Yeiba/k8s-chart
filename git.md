@@ -74,3 +74,15 @@ Usage: git stash save
 Usage: git stash pop
 Usage: git stash list
 Usage: git stash drop
+
+echo "# Terraform" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Yeiba/Terraform.git
+git push -u origin main
+
+git remote add origin https://github.com/Yeiba/Terraform.git
+git branch -M main
+git push -u origin main
