@@ -1,0 +1,17 @@
+--- 
+# repositories:
+#   - name: github
+#     url: https://github.com/
+
+releases:
+  - name: ingress-nginx
+    chart: ./ingress-nginx-chart
+    installed: true
+
+  - name: cert-manager
+    chart: ./cert-manager-chart
+    installed: true
+
+  - name: ingress
+    chart: ./ingress-chart
+    installed: true
