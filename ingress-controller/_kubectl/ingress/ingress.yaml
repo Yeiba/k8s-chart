@@ -9,15 +9,43 @@ spec:
   - hosts:
     - example.com
     secretName: userapi-tls
+
   ingressClassName: nginx
   rules:
   - host: example.com
     http:
       paths:
-      - path: /user-app(/|$)(.*)
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: frontendservice
+            port:
+              number: 80
+  - host: dashboard.example.com
+    http:
+      paths:
+      - path: /backoffice
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: frontendservice
+            port:
+              number: 80
+  - host: api.example.com
+    http:
+      paths:
+      - path: /user
         pathType: ImplementationSpecific
         backend:
           service:
             name: user-app-service
+            port:
+              number: 80
+      - path: /items
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: items-app-service
             port:
               number: 80
