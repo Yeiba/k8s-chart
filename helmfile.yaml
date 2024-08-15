@@ -1,7 +1,7 @@
 --- 
-repositories:
-  - name: github
-    url: https://github.com/
+# repositories:
+#   - name: github
+#     url: https://github.com/
 
 releases:
   - name: user-app-v1

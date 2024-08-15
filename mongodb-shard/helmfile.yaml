@@ -1,0 +1,32 @@
+--- 
+# repositories:
+#   - name: github
+#     url: https://github.com/
+
+releases:
+  - name: nfs-common-ubuntu-installer
+    chart: ./node-installer-ubuntu
+    installed: true
+
+  - name: nfs-common-linux-installer
+    chart: ./node-installer-linux
+    installed: true
+    
+  - name: mongo-config-server
+    chart: ./mongo-config-server
+    installed: true
+
+  - name: mongo-shard-one
+    chart: ./shard-one
+    installed: true
+    
+  - name: mongo-shard-two
+    chart: ./shard-two
+    installed: true
+    
+  - name: mongos-router
+    chart: ./mongos-router
+    installed: true
+
+
+
