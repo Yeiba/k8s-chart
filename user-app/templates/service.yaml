@@ -4,7 +4,7 @@ metadata:
   name: user-app-service
 spec:
   selector:
-    app: user-app
+    app: myapp
   type: clusterIP
   ports:
     - port: 80

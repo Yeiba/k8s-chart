@@ -5,11 +5,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
-  tls:
-  - hosts:
-    - example.com
-    secretName: userapi-tls
-
   ingressClassName: nginx
   rules:
   - host: example.com
@@ -48,4 +43,8 @@ spec:
           service:
             name: items-app-service
             port:
+  tls:
+  - hosts:
+    - example.com
+    secretName: userapi-tls
               number: 80
