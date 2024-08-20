@@ -1,0 +1,26 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-west-2
+
+filters:
+  instance-state-name: running
+  tag:aws:eks:cluster-name: my-cluster  # Replace with your EKS cluster name tag
+
+keyed_groups:
+  - key: tags.Name
+    prefix: tag_Name
+    separator: '_'
+  - key: placement.region
+    prefix: aws_region
+  - key: vpc_id
+    prefix: vpc_id
+
+hostnames:
+  - tag:Name
+  - public_ip_address
+  - private_ip_address
+
+compose:
+  ansible_host: public_ip_address
+
+aws_profile: default
