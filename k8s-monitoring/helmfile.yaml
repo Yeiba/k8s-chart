@@ -1,0 +1,15 @@
+--- 
+# repositories:
+#   - name: github
+#     url: https://github.com/
+
+releases:
+  - name: prometheus-costume-resources
+    chart: ./prometheus-operator-crd
+    installed: true
+
+  - name: monitoring-components
+    chart: ./monitoring
+    installed: true
+    
+
