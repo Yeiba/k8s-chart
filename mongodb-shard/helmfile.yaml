@@ -28,5 +28,9 @@ releases:
     chart: ./mongos-router
     installed: true
 
+  - name: mongo-express
+    chart: ./mongo-express
+    installed: true
+
 
 

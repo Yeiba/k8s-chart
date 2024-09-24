@@ -12,16 +12,14 @@ cert-manager ACME challenge lifecycle: https://cert-manager.io/docs/concepts/acm
 letsencrypt ACME directory URL: https://letsencrypt.org/getting-started/
 how letsencrypt works: https://letsencrypt.org/how-it-works/
 
-
 https://www.youtube.com/watch?v=N7W_nsEA-Ao
 
 https://www.youtube.com/watch?v=9EVs5LcaUcs
 
-
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
-helm template ingress-nginx ingress-nginx \
+sudo helm template ingress-nginx ingress-nginx \
   --repo https://kubernetes.github.io/ingress-nginx \
   --version 4.10.0 \
   --namespace ingress-nginx \
-  > ./ingress-controller/ingress-nginx/ingress-nginx-1-10.0.yaml
+  > ./ingx/ingress-nginx-1-10.0.yaml
