@@ -8,10 +8,6 @@ releases:
     chart: ./node-installer-ubuntu
     installed: true
 
-  - name: nfs-common-linux-installer
-    chart: ./node-installer-linux
-    installed: true
-    
   - name: mongo-config-server
     chart: ./mongo-config-server
     installed: true

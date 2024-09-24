@@ -4,7 +4,7 @@ metadata:
   name: mongos
   namespace: mongo-shard
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 27017
       targetPort: 27017

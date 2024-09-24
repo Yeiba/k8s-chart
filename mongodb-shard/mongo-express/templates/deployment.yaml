@@ -40,7 +40,7 @@ metadata:
   name: express-service
   namespace: mongo-shard
 spec:
-  type: LoadBalancer  # Change to NodePort if LoadBalancer is not supported in your cluster
+  type: NodePort  # Change to NodePort if LoadBalancer is not supported in your cluster
   ports:
   - port: 8081
     targetPort: 8081
