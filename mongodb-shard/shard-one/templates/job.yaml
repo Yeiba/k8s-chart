@@ -12,9 +12,9 @@ spec:
           command:
             [
               "mongosh",
+              "--port",
+              "27017",
               "--eval",
-              "--host",
-              "shard1-0.shard1.mongo-shard.svc.cluster.local",
               "rs.initiate({_id: 'shard1ReplSet', members: [{ _id : 0, host : 'shard1-0.shard1:27017' }, { _id : 1, host : 'shard1-1.shard1:27017' }, { _id : 2, host : 'shard1-2.shard1:27017' }]})",
             ]
       restartPolicy: OnFailure

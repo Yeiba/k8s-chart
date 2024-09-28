@@ -8,14 +8,12 @@ spec:
     spec:
       containers:
         - name: init-config-server
-          image: mongo:latest
-          command:
-            [
-              "mongosh",
-              "--eval",
-              "--host",
-              "config-server-0.config-server.mongo-shard.svc.cluster.local",
-              "rs.initiate({_id: 'configReplSet', configsvr: true, members: [{ _id : 0, host : 'config-server-0.config-server:27017' }, { _id : 1, host : 'config-server-1.config-server:27017' }, { _id : 2, host : 'config-server-2.config-server:27017' }]})"
-            ]
+          image: mongo:5.0
+          command: ["/bin/sh", "-c"]  # Use shell to run multiple commands
+          args:
+            - |
+              mongosh --port 27019 --eval "rs.initiate();"
+              mongosh --port 27019 --eval "var cfg = rs.conf(); cfg.members[0].host='config-server-0.config-server:27019'; rs.reconfig(cfg);"
+              mongosh --port 27019 --eval "rs.add('config-server-1.config-server:27019'); rs.add('config-server-2.config-server:27019');"
       restartPolicy: OnFailure
-  backoffLimit: 4  # Optional, limits the number of retries before giving up
+
