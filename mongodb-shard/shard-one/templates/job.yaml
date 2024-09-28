@@ -8,11 +8,13 @@ spec:
     spec:
       containers:
         - name: init-shard1
-          image: mongo:latest
+          image: mongo:5.0
           command:
             [
-              "mongo",
+              "mongosh",
               "--eval",
               "rs.initiate({_id: 'shard1ReplSet', members: [{ _id : 0, host : 'shard1-0.shard1:27017' }, { _id : 1, host : 'shard1-1.shard1:27017' }, { _id : 2, host : 'shard1-2.shard1:27017' }]})",
             ]
       restartPolicy: OnFailure
+  backoffLimit: 4  # Optional, limits the number of retries before giving up
+

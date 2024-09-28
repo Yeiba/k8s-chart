@@ -8,11 +8,13 @@ spec:
     spec:
       containers:
         - name: add-shards
-          image: mongo:latest
+          image: mongo:5.0
           command:
             [
-              "mongo",
+              "mongosh",
               "--eval",
               "sh.addShard('shard1ReplSet/shard1-0.shard1:27017'); sh.addShard('shard2ReplSet/shard2-0.shard2:27017');",
             ]
       restartPolicy: OnFailure
+  backoffLimit: 4  # Optional, limits the number of retries before giving up
+
