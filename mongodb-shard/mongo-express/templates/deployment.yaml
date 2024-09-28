@@ -10,29 +10,40 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: express-deployment
+  labels:
+    app: mongo-express
+  name: mongo-express
   namespace: mongo-shard
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: express
+      app: mongo-express
   template:
     metadata:
       labels:
-        app: express
+        app: mongo-express
     spec:
       containers:
-      - name: express
-        image: mongo-express:latest  # Replace with your actual Express image
-        ports:
-        - containerPort: 8081  # Assuming your Express app runs on port 3000
-        env:
-        - name: ME_CONFIG_MONGODB_SERVER
-          valueFrom: 
-            configMapKeyRef:
-              name: mongodb-configmap
-              key: database_url
+        - name: mongo-express
+          # image: mongo-express # connects but Turn on admin in config.js to view server stats!
+          # image: mongo-express:latest # connects but  Turn on admin in config.js to view server stats!
+          image: mongo-express:0.54.0
+          # image: mongo-express:0.54
+          imagePullPolicy: 'Always'
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+
+          resources:
+            limits:
+              memory: '1Gi'
+              cpu: '100m'
+          env:
+          - name: ME_CONFIG_MONGODB_SERVER
+            valueFrom: 
+              configMapKeyRef:
+                name: mongodb-configmap
+                key: database_url
 ---
 apiVersion: v1
 kind: Service
@@ -41,7 +52,10 @@ metadata:
   namespace: mongo-shard
 spec:
   ports:
-  - port: 8081
+  - name: http
+    port: 8081
     targetPort: 8081
+    protocol: TCP
   selector:
     app: express
+  type: LoadBalancer

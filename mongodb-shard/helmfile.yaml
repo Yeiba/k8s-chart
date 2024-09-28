@@ -4,10 +4,6 @@
 #     url: https://github.com/
 
 releases:
-  - name: nfs-common-ubuntu-installer
-    chart: ./node-installer-ubuntu
-    installed: true
-
   - name: mongo-config-server
     chart: ./mongo-config-server
     installed: true
