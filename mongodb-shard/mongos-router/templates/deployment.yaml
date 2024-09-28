@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mongos
-          image: mongo:5.0
+          image: mongo:latest
           command:
             - mongos
             - "--configdb"

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: shard1
-          image: mongo:5.0
+          image: mongo:latest
           command:
             - mongod
             - "--shardsvr"

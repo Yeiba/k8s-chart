@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - name: add-shards
-          image: mongo:5.0
+          image: mongo:latest
           command:
             [
               "mongosh",
