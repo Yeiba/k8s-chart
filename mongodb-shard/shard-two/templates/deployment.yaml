@@ -32,15 +32,15 @@ spec:
             limits:
               memory: 512Mi
               cpu: 500m
-          volumeMounts:
-            - name: shard2-data
-              mountPath: /data/db
-  volumeClaimTemplates:
-    - metadata:
-        name: shard2-data
-      spec:
-        accessModes: ["ReadWriteMany"]
-        storageClassName: "nfs-client"
-        resources:
-          requests:
-            storage: 1Gi
+  #         volumeMounts:
+  #           - name: shard2-data
+  #             mountPath: /data/db
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: shard2-data
+  #     spec:
+  #       accessModes: ["ReadWriteMany"]
+  #       storageClassName: "nfs-client"
+  #       resources:
+  #         requests:
+  #           storage: 1Gi
